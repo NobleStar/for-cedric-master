@@ -1,0 +1,141 @@
+.row#second-row
+	.container
+		.row
+			.span10
+				%ul.nav-pills{:style => "margin-left: 0px;"}
+					%li.step-tab.btn.selected{:style => "z-index: 100;"}
+						=link_to "Getting Started", static_pages_getting_started_path
+					%li.step-tab.btn.selected{:style => "z-index: 90;"}
+						=link_to "Project Profile & Donation Rewards", edit_project_path(@project)
+					%li.step-tab.btn.selected{:style => "z-index: 80;"}
+						- if @owner_info
+							=link_to "Owner Information", edit_project_owner_info_path(@project, @project.owner_info)
+						- else
+							= link_to "Owner Information", new_project_owner_info_path(@project)
+					%li.step-tab.btn.selected{:style => "z-index: 70;"}
+						=link_to "Verify Account", new_project_account_verify_path(@project)
+					%li.step-tab.btn.last-tab.selected{:style => "z-index: 60;"}
+						=link_to "Checklist", checklist_project_path(@project)
+			.span2
+				%button.btn.btn-large#btn-review
+					%i.icon-eye-open
+					Review
+.row#start-preview-third-row
+	.container
+		%h3 
+			%center
+				= @project.title
+		.row.span4.offset4
+			.row.hr-row
+				%hr.hr-row{style:"width:83%;"}
+		%center#by
+			by:
+			- if @owner_info
+				= @owner_info.name
+
+.row#start-preview-fourth-row
+	.container#content
+		.row#content-header{style:"background-color:white;"}
+			.row-fluid
+				.span2.offset1
+					%h4 Sponsors
+				.span3
+					%h4 Amount Pledged						
+				.span2.offset1
+					%h4 Days left
+			.row-fluid
+				.span2.offset1
+					%h4 0
+				.span3
+					%h4 
+						$0 out of 
+						= number_to_currency(@project.goal)
+					.progress.progress-striped.active
+						.bar{style:"width: 20%;"}
+				.span2.offset1
+					%h4
+						= @project.funding_deadline
+		.row#main-content
+			.span8#content-left
+				- if @owner_info and !@owner_info.video_url.blank?
+					.row-fluid#content-left-first-row
+						= @owner_info.video_url_html
+					
+
+					.row-fluid#content-left-second-row
+						.span5
+							%button.btn#btn-like
+								%i.icon-thumbs-up
+								Like
+							%span{style: "font-size:80%;"} 976 people like this.Be the first of your friends.							
+						.span2
+							%button.btn#btn-tweet
+								%i.icon-twitter							
+								Tweet
+						.span5
+							%button.btn.btn-small#btn-embed <>Embed
+							%input{type:"text", placeholder: @owner_info.video_url, style:"width:150px;margin-bottom: 0px;"}
+				.row.hr-row
+					%hr.hr-row
+				.row-fluid#content-left-third-row
+					%p
+						- if @owner_info
+							= @owner_info.description
+					- unless @project.image.blank?
+						= image_tag("#{@project.image}")
+					%p
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						%br
+						%br
+						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						%br
+						%br
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+						%br
+						%br
+						Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			.span3#content-right
+				.row-fluid#content-right-first-row
+					.row-fluid
+						.span6
+							- if @owner_info
+								- unless @owner_info.photo.blank?
+									= image_tag("#{@owner_info.photo}")
+						.span6
+							%p Project by
+							%h4
+								- if @owner_info
+									= @owner_info.name
+							%p
+								- if @owner_info
+									= @owner_info.location
+							= link_to "Contact me","mailto:#{current_user.email}"
+					.row.hr-row
+						%hr.hr-row
+					.row-fluid						
+						%p.content-right-first-row-bottom
+							%strong Launched:
+							= @project.created_at.strftime("%b %d, %Y")
+						.row.hr-row
+							%hr.hr-row
+						%p.content-right-first-row-bottom
+							%strong Funding ends:
+							= (@project.created_at+@project.funding_deadline.to_i.days).strftime("%b %d, %Y")
+						.row.hr-row
+							%hr.hr-row
+						%p.content-right-first-row-bottom
+							%strong Website:
+							- if @owner_info
+								= @owner_info.website
+						%center
+							= link_to "See full bio", "#"
+				.row-fluid#content-right-second-row
+					- @rewards.each do |reward|
+						%h4 Pledge #{reward.amount} or More
+						%p
+							= reward.name
+							%br
+							%br
+							= reward.description
+						.row.hr-row
+							%hr.hr-row

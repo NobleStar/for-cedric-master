@@ -1,0 +1,89 @@
+.row#second-row
+	.container
+		.row
+			.span10
+				%ul.nav-pills{:style => "margin-left: 0px;"}
+					%li.step-tab.btn.active{:style => "z-index: 100;"}
+						=link_to "Getting Started", "#"	
+					%li.step-tab.btn{:style => "z-index: 90;"}
+						=link_to "Project Profile & Donation Rewards", '#'
+					%li.step-tab.btn{:style => "z-index: 80;"}
+						=link_to "Owner Information", '#'
+					%li.step-tab.btn{:style => "z-index: 70;"}
+						=link_to "Verify Account", '#'
+					%li.step-tab.btn.last-tab{:style => "z-index: 60;"}
+						=link_to "Checklist", '#'
+			.span2
+				= link_to static_pages_start_preview_path do
+					%button.btn.btn-large{:style => "float:right;"}
+						%i.icon-eye-open
+						Review
+.row#third-row
+	.container
+		%h3 
+			%center
+				Lorem ipsum dolor sit amet consecteular.
+		%p
+			%center
+				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laud.
+
+.row#fourth-row
+	.container
+		.content
+			.row-fluid
+				.span9
+					%p
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.<br><br>
+
+						Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+					.row-fluid
+						.span11.offset1
+							%h5 1.Lorem ipsum dolor sit amet.
+							%p
+								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+					.row-fluid
+						.span11.offset1
+							%h5 2.Lorem ipsum dolor sit amet.
+							%p
+								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
+					.row-fluid
+						.span11.offset1
+							%h5 3.Lorem ipsum dolor sit amet.
+							%p
+								Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. 
+					.row-fluid
+						.span11.offset1
+							%h6 Eaque ipsa quae ab illo inventore.
+							%p
+								Veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur. 
+					.row-fluid
+						.span11.offset1
+							%h6 Aut odit aut fugit, sed quia.
+							%p
+								Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+					.row-fluid{:style=>"padding-bottom: 30px;"}
+						.span11
+							%hr#bottom-line
+
+				.span3
+					%hr#left-line
+
+				
+.row#fifth-row
+	.container
+		.row
+			.span1.offset5
+				= link_to "Back", static_pages_start_project_path, class:"btn btn-large"
+			.span1
+				- if @project.blank?
+					= link_to "Next", new_project_path, class:"btn btn-large btn-success"
+				- else
+					= link_to "Next", edit_project_path(@project), class:"btn btn-large btn-success"
+			.span1.offset3{:style => "padding-top: 10px;"}
+				%a{style: "cursor: pointer"}
+					%i.icon-trash
+					Delete
+			.span1{:style => "padding-top: 10px;"}
+				%a{style: "cursor: pointer"}
+					= image_tag "icon-exit.png"
+					Exit

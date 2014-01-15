@@ -1,0 +1,74 @@
+.row#profile-page-second-row{style:"padding-bottom: 10px;"}
+  .container
+    .row-fluid
+      .span2
+        .well
+          = image_tag(@user.image_url) if @user.image? 
+
+      .span10
+        %h4
+          =@user.name
+        %h5
+          =@user.get_location
+
+.row#profile-settings-third-row
+  .container
+    .row-fluid
+      %h4 Profile
+      %hr.hr-row
+
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = devise_error_messages!
+        %div
+          = f.label :name
+          = f.text_field :name, :autofocus => true
+        %div
+          = f.label :image
+          = f.file_field:image
+          %p{style:"font-size: 90%;"} We Support Jpg, Png, Gif
+
+        %div
+          = f.label :location
+          = f.text_field :location
+        %div
+          = f.label :tagline
+          = f.text_field :tagline
+        %div
+          = f.label :url
+          = f.text_field :url
+        %div
+          = f.label :email
+          = f.email_field :email 
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+        %div
+          = f.label :password
+          = f.password_field :password, :autocomplete => "off"
+          %i (leave blank if you don't want to change it)
+        %div
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation
+        %div= f.submit "Update"
+.row#profile-settings-fourth-row
+  .container
+    .row-fluid{style:"margin-top: 50px;"}
+      %h4 Notifications
+      %hr.hr-row
+    .row-fluid
+      .span2
+        %span Newsletter
+      .span6
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliq uip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volu ptate velit esse cillum dolore eu fugiat nulla pariatur.
+      .span3.offset1
+        %center
+          %button.btn.btn-large.btn-success Sign Up
+    .row-fluid
+      .span2
+        %span Delete Account
+      .span6
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua.
+      .span3.offset1
+        %center
+          Unhappy? #{button_to "Delete My Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class=>'btn-large btn-success'}

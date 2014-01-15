@@ -1,0 +1,22 @@
+.row#login-second-row{
+	background-color: #f4f4f4;
+	padding-top: 20px;
+	padding-bottom: 50px;
+	h3 {
+		margin-top: 20px;
+		margin-bottom: 0px;
+	}
+	input[type="text"], input[type="email"], input[type="password"] {
+		margin-top: 20px;
+		width: 97%;
+		background-color: white;
+	}
+
+	a {
+		color: #aadd33;
+	}
+}
+
+.zeromarginleft{
+ margin-left: 0 !important;
+}

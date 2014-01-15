@@ -1,0 +1,73 @@
+.row#verify-account-fourth-row {	
+	background-color: #f4f4f4;
+	.content {
+
+		margin-top: 30px;
+		margin-bottom: 40px;
+
+		.left-content {
+			background-color: #f4f4f4;
+			padding-right: 30px;
+
+			.left-content-row {				
+				margin-bottom: 20px;
+				background-color: white;
+				padding: 10px 10px 10px 15px;
+				margin-right: 30px;
+				button {
+					margin-top: 10px;
+				}
+				.table-bordered {
+					margin-bottom: 5px;
+					width: 100%;
+					tr {
+						width: 100%;
+						padding: 0px 0px 0px 0px;
+						margin: 0px 0px 0px 0px;
+						td {
+							padding: 0px 0px 0px 0px;
+							border-style: solid;
+							border-width: 1px 0px 0px 1px;
+							border-color: #ccc;
+
+							input[type="text"], input[type="email"]{
+								width: 88%;							
+								margin: 0px 0px 0px 0px;
+								border-radius: 0px 0px 0px 0px;
+								border:none;
+								box-shadow: none;								
+							}
+						}
+						.label-td {
+							background-color: #f4f4f4;
+							padding-left: 10px;
+							padding-top: 5px;
+							vertical-align: top;
+
+						}
+						p {
+							margin: 15px 15px 15px 15px;
+						}
+						button {
+							margin: 5px 10px 15px 15px;
+						}
+					}
+				}
+			}
+		}
+		.right-content {
+			margin-left: 30px;
+			border-style: solid;
+			border-width: 0px 0px 0px 1px;
+			border-color: #b8b8b8;
+			padding-left:15px;
+		}
+	}
+}	
+
+a.entire-selectable:hover{
+	text-decoration: none;
+	div.well {
+		border-color: green;
+	}
+}

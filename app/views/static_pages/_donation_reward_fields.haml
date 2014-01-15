@@ -1,0 +1,37 @@
+.span8
+  %table.table-bordered
+    %tbody
+      %tr
+        %td.label-td{style:"width:30%;"} Amount
+        %td{style:"width:20%;"}
+          = f.text_field :amount, placeholder:"$0"
+        %td.label-td{style:"width:30%;"}
+        %td{style:"width:20%; padding-left: 10px;"}
+          = f.hidden_field :_destroy
+          = link_to "Delete", '#', class: "remove_fields icon-trash"
+      %tr
+        %td.label-td{style:"width:30%;"} Name
+        %td{style:"width:70%;", colspan:"3"}
+          = f.text_field :name
+      %tr
+        %td.label-td{style:"width:30%;"} Description
+        %td{style:"width:70%;", colspan:"3"}
+          = f.text_field :description
+      %tr
+        %td.label-td{style:"width:30%;"} Estimated Delivery
+        %td{style:"width:40%;", colspan:"2"}
+          =# f.select_month(Date.today)
+        %td{style:"width:30%;"}
+          =# f.select_year(Date.today, :start_year => Date.today.year, :end_year => 8.years.from_now.year)
+      %tr
+        %td.label-td{style:"width:30%;"} Additional Shipping Info
+        %td{style:"width:70%;", colspan:"3"}
+          = f.text_field :shipping_info
+      %tr
+        %td.label-td{style:"width:100%;", colspan:"4"}      
+          %center
+            %p
+              0 Backers
+              %label.checkbox{style:"margin-left: 60px; display: inline-block;"}
+                = check_box_tag :no_avail
+                Limit Number Available

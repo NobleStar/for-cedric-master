@@ -1,0 +1,30 @@
+.navbar
+  %nav.navbar-inner
+    .container
+      = link_to image_tag("mobb_logo.png", class: "brand", style: "margin-bottom: -1px;"), static_pages_home_page_path
+      .nav-collapse
+        %ul.nav
+          %li.center{:class => "#{'active' if current_page?(dashboard_path)}"}=link_to "Dashboard", dashboard_path
+          %li.center{:class => "#{'active' if current_page?(registrants_path)}"}=link_to "Registrants", registrants_path
+          %li.center{:class => "#{'active' if current_page?(projects_path)}"}=link_to "Projects", projects_path
+          %li.center{:class => "#{'active' if current_page?(donations_path)}"}=link_to "Donations", donations_path
+
+        - if user_signed_in?
+          %ul.nav.pull-right
+            %li.dropdown
+              %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"}
+                %i.icon-user
+                = current_user.name
+                %b.caret
+              %ul.dropdown-menu{"role" => "menu"}
+                %li 
+                  %a 
+                    = link_to 'Edit account', edit_user_registration_path
+                  %a 
+                    = link_to 'Logout', destroy_user_session_path, :method=>'delete'
+        - else
+          %ul.nav.pull-right
+            %li
+              = link_to 'Login', new_user_session_path
+            %li
+              = link_to 'Sign up', new_user_registration_path

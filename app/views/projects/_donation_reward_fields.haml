@@ -1,0 +1,39 @@
+%span.twelve12
+  .span4.zeromarginleft
+  .span8
+    %table.table-bordered
+      %tbody
+        %tr
+          %td.label-td{style:"width:30%;"} Amount
+          %td{style:"width:20%;"}
+            = f.text_field :amount, placeholder:"$0"
+          %td.label-td{style:"width:30%;"}
+          %td{style:"width:20%; padding-left: 10px;"}
+            = f.hidden_field :_destroy
+            = link_to "Delete", '#', class: "remove_fields icon-trash"
+        %tr
+          %td.label-td{style:"width:30%;"} Name
+          %td{style:"width:70%;", colspan:"3"}
+            = f.text_field :name
+        %tr
+          %td.label-td{style:"width:30%;"} Description
+          %td{style:"width:70%;", colspan:"3"}
+            = f.text_field :description, :maxlength=> "75"
+        %tr
+          %td.label-td{style:"width:30%;"} Estimated Delivery
+          %td{style:"width:40%;", colspan:"2"}
+            = f.select :month, options_for_select(MONTHS)
+          %td{style:"width:30%;"}
+            = f.select :year, options_for_select(YEARS)
+        %tr
+          %td.label-td{style:"width:30%;"} Additional Shipping Info
+          %td{style:"width:70%;", colspan:"3"}
+            = f.text_field :shipping_info
+        %tr
+          %td.label-td{style:"width:100%;", colspan:"4"}      
+            %center
+              %p
+                %label
+                  = f.check_box :no_avail, :class=> "noavail"
+                  Limit Number Available
+                = f.text_field :no_avail_input, :class => "noavailinput", :style => "display: none;"

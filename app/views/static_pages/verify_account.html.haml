@@ -1,0 +1,153 @@
+.row#second-row
+	.container
+		.row
+			.span10
+				%ul.nav-pills{:style => "margin-left: 0px;"}
+					%li.step-tab.btn.selected{:style => "z-index: 100;"}
+						= link_to "Getting Started", static_pages_getting_started_path
+					%li.step-tab.btn.selected{:style => "z-index: 90;"}
+						=link_to "Project Profile & Donation Rewards", new_project_path
+					%li.step-tab.btn.selected{:style => "z-index: 80;"}
+						=link_to "Owner Information", static_pages_owner_info_path
+					%li.step-tab.btn.active{:style => "z-index: 70;"}
+						=link_to "Verify Account", static_pages_verify_account_path
+					%li.step-tab.btn.last-tab{:style => "z-index: 60;"}
+						=link_to "Checklist", static_pages_checklist_path
+			.span2
+				= link_to static_pages_start_preview_path do
+					%button.btn.btn-large{:style => "float:right;"}
+						%i.icon-eye-open
+						Review
+.row#third-row
+	.container
+		%h3 
+			%center
+				Lorem ipsum dolor sit amet consecteular.
+		%p
+			%center
+				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laud.
+
+.row#verify-account-fourth-row
+	.container
+		.row-fluid.content
+			.span9.left-content
+				.row-fluid.left-content-row
+					.span4
+						%h5 Payment Verification						
+					.span8
+						%h5 Sed ut perspiciatis unde omnis iste natus.
+						%p
+							Error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis. 
+						%p 
+							Et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas! 
+						%a.btn.btn-success{href: "https://payments.amazon.com/sdui/sdui/accountstatus", target: "_blank"} Connect to Amazon Payments
+				.row-fluid.left-content-row
+					.span4
+						%h5 Personal Identity Verification
+					.span8
+						%h5 Sed ut perspiciatis unde omnis iste natus.
+						%p
+							Error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis. Et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas!						
+						
+							
+						= form_for [@project, @account_verify] do |f|
+							%table.table-bordered
+								%tbody
+									%tr
+										%td.label-td{style:"width:30%;"} Legal Name
+										%td{style:"width:35%;"}
+											%input{name: "first_name", type:"text", placeholder:"First Name"}
+										%td{style:"width:35%;"}
+											%input{name: "last_name", type:"text", placeholder:"Last Name"}
+							%table.table-bordered
+								%tbody
+									%tr
+										%td.label-td{style:"width:30%;"} Birthdate
+										%td{style:"width:30%;"}
+											%input{name: "month", type:"text", placeholder:"Month"}
+										%td{style:"width:20%;"}
+											%input{name: "day", type:"text", placeholder:"Day"}
+										%td{style:"width:20%;"}
+											%input{name: "year", type:"text", placeholder:"Year"}
+							%table.table-bordered
+								%tbody
+									%tr
+										%td.label-td{style:"width:30%;", rowspan:"3"} Home/Work Address
+										%td{style:"width:70%;", colspan:"3"}
+											%input{name: "address1", type:"text", placeholder:"Address 1"}
+									%tr
+										%td{style:"width:70%;", colspan:"3"}
+											%input{name: "address2", type:"text", placeholder:"Address 2(optional)"}
+									%tr
+										%td{style:"width:20%;"}
+											%input{name: "city", type:"text", placeholder:"City"}
+										%td{style:"width:20%;"}
+											%input{name: "state", type:"text", placeholder:"State"}
+										%td{style:"width:30%;"}
+											%input{name: "zip", type:"text", placeholder:"Zip"}
+						%table.table-bordered
+							%tbody
+								%tr
+									%td.label-td{style:"width:30%;", rowspan:"3"} Email
+									%td{style:"width:50%;"}
+										%input{type:"email", placeholder:"xyz@loremipsum.com"}
+									%td{style:"width:20%;"}
+										%b Unverified
+								%tr
+									%td{style:"width:70%; background-color:#f4f4f4;", colspan:"2"}
+										%p
+											Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore. Lorem ipsum dolor sit amet consecteualr veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+						%table.table-bordered{style:"margin-bottom: 5px;"}
+							%tbody
+								%tr
+									%td.label-td{style:"width:30%", rowspan:"3"} Phone
+									%td{style:"width:70%;"}
+										%input{type:"text", "text-align" => "right", placeholder:"Ex: 000-000-0000"}
+								%tr
+									%td{style:"width:70%; background-color:#f4f4f4;"}
+										%p
+											Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore. Lorem ipsum dolor sit amet consecteualr veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+						%button.btn.btn-success Send Verification Email
+
+
+			.span3.right-content
+				.row-fluid
+					%h6 Sed ut perspiciatis unde.
+					%p
+						Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+				.row-fluid
+					%h6 Nemo enim ipsam voluptatem quia.
+					%p
+						Voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+				.row-fluid
+					%h6 Ut enim ad minima veniam.
+					%p
+						Quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+				.row-fluid
+					%h6 Sed ut perspiciatis unde.
+					%p
+						Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+				.row-fluid
+					%h6 Nemo enim ipsam voluptatem quia.
+					%p
+						Voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+				.row-fluid
+					%h6 Ut enim ad minima veniam.
+					%p
+						Quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+				
+.row#fifth-row
+	.container
+		.row
+			.span1.offset5
+				= link_to "Back", static_pages_owner_info_path, class: "btn btn-large"
+			.span1
+				= link_to "Next", static_pages_checklist_path, class: "btn btn-large btn-success"
+			.span2.offset2{:style => "padding-top: 10px;"}
+				%a
+					%i.icon-trash
+					Delete Project
+			.span1{:style => "padding-top: 10px;"}
+				%a
+					= image_tag "icon-exit.png"
+					Exit

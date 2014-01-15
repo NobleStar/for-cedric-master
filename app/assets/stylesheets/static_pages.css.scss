@@ -1,0 +1,141 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.nav-pills{
+	li.step-tab{
+		border-radius: 9px 30px 30px 9px;		
+		margin-left: -18px;
+		position:relative;
+		a {
+			color: #333;		
+		}	
+	}
+
+	li.last-tab{
+		border-radius: 0px 7px 7px 0px;		
+	}
+
+
+	li.active {	
+		border-color: #333;
+		box-shadow: none;
+		background: none;
+		background-color: #333;
+		a{
+			color: white;
+			text-shadow: none;
+			background-color: #333;
+		}
+		a:hover{
+			color: white;
+			text-shadow: none;
+			background-color: #333;
+		}
+
+	}
+	li.selected {	
+		border-color: #f4f4f4;
+		box-shadow: none;
+		background: none;
+		background-color: #5d5d5d;
+		a{
+			color: #9ad80d;
+			text-shadow: none;
+			background-color: #5d5d5d;
+		}
+		a:hover{
+			color: #9ad80d;
+			text-shadow: none;
+
+		}
+
+	}
+}
+
+#first-row{
+	padding-top: 10px;
+	background-color: white;
+}
+
+#second-row{
+	padding-top: 10px;
+	padding-bottom: 1px;
+	background-color: #F4F4F4;
+	ul {
+		li{
+			padding-left: 20px;
+			padding-right: 15px;
+			padding-top: 10px;
+			height: 25px;
+		}
+	}
+	#btn-review {
+		background:none;
+		background-color:#333;
+		box--shadow: none;
+		text-shadow: none;
+		color: white;
+		float:right;
+		margin-top: -2px;
+	}
+	#btn-review:active{
+
+	}
+}
+
+#third-row{
+	padding-top: 10px;
+	padding-bottom: 30px;
+	background-color: white;
+}
+#fourth-row{
+	padding-top: 30px;
+	background-color: #F4F4F4;
+}
+
+#fifth-row{
+	padding-top: 30px;
+	padding-bottom: 50px;
+	background: #eef7fd; /* Old browsers /
+	background: -moz-linear-gradient(top, #eef7fd 1%, #e2f1fc 100%); / FF3.6+ /
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#eef7fd), color-stop(100%,#e2f1fc)); / Chrome,Safari4+ /
+	background: -webkit-linear-gradient(top, #eef7fd 1%,#e2f1fc 100%); / Chrome10+,Safari5.1+ /
+	background: -o-linear-gradient(top, #eef7fd 1%,#e2f1fc 100%); / Opera 11.10+ /
+	background: -ms-linear-gradient(top, #eef7fd 1%,#e2f1fc 100%); / IE10+ /
+	background: linear-gradient(to bottom, #eef7fd 1%,#e2f1fc 100%); / W3C /
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eef7fd', endColorstr='#e2f1fc',GradientType=0 ); / IE6-9 */
+}
+
+hr#bottom-line {
+	border-color: #ccc;	
+	border-left-width-ltr-source: physical;
+	border-left-width-rtl-source: physical;
+	border-left-width-value: 0;
+	border-right-width-ltr-source: physical;
+	border-right-width-rtl-source: physical;
+	border-right-width-value: 0;
+	border-top-width: 0;
+
+}
+hr#left-line {
+	border-color: #ccc;	
+	height: 470px;
+	background-color: #CCC;
+	width: 1px;
+}
+
+.navbar{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+
+
+#logo-bar {
+	background-color: #fff;	
+}
+
+#step-tabs {
+	background-color: #eee;		
+}

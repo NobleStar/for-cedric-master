@@ -1,0 +1,42 @@
+.row#start-project-first-row
+  .container
+    .row
+      .span2
+        = link_to image_tag("mobb_logo.png", class: "brand", style: "margin-top: 10px;"), static_pages_home_page_path
+      .span7
+        %ul.nav.nav-tabs
+          %li#about{:class=>current_page?(static_pages_about_path)? 'active':''}
+            = link_to "About Idea Mobb", static_pages_about_path, id: "about"
+          %li#browse{:class=>current_page?(static_pages_browse_path)? 'active':''}
+            = link_to "Browse", static_pages_browse_path, id: "browse"
+          - if user_signed_in?
+            %li#start{:class=>current_page?(static_pages_start_project_path)? 'active':''}
+              = link_to "Start", static_pages_start_project_path, id: "start"
+      .span3
+        .row-fluid
+          .span12
+            %form
+              - if user_signed_in?
+
+                .btn-group
+                  %a.btn.dropdown-toggle{"data-toggle"=>"dropdown", "href"=>"#"}
+                    = image_tag(@user.image_url, :size => '50x30') if @user.image? 
+
+                    Hi
+                    =current_user.name
+                    %span.caret
+                  %ul.dropdown-menu
+                    %li
+                      = link_to 'My Profile', 'static_pages/profile_page' 
+                    %li
+                      = link_to 'Profile Settings', '/users/edit' 
+                    %li
+                      = link_to 'Logout', destroy_user_session_path, :method=>'delete' 
+              - else
+                = link_to "Log in", static_pages_login_path, class: "btn btn-small btn-success"
+                = link_to " Sign up", static_pages_login_path, class: "btn btn-small btn-primary"
+        .row-fluid
+          .span12
+            %form.form-search
+              %input.input-medium.search-query{type: "text",placeholder: "To search type..."}
+                %i.icon-search

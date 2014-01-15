@@ -1,0 +1,183 @@
+.row#second-row
+	.container
+		.row
+			.span10
+				%ul.nav-pills{:style => "margin-left: 0px;"}
+					%li.step-tab.btn.selected{:style => "z-index: 100;"}
+						= link_to "Getting Started", static_pages_getting_started_path
+					%li.step-tab.btn.selected{:style => "z-index: 90;"}
+						=link_to "Project Profile & Donation Rewards", edit_project_path(@project)
+					%li.step-tab.btn.active{:style => "z-index: 80;"}
+						=link_to "Owner Information", "#"
+					%li.step-tab.btn{:style => "z-index: 70;"}
+						=link_to "Verify Account", "#"
+					%li.step-tab.btn.last-tab{:style => "z-index: 60;"}
+						=link_to "Checklist", "#"
+			.span2
+				= link_to start_preview_project_path(@project.id) do
+					%button.btn.btn-large{:style => "float:right;"}
+						%i.icon-eye-open
+						Review
+.row#third-row
+	.container
+		%h3
+			%center
+				Lorem ipsum sit consecteular.
+		%p
+			%center
+				Sed ut perspiciatis unde omnis doloremque laud.
+
+- if @owner_info.errors.any?
+	#errorExplanation
+		%h2
+			= pluralize(@owner_info.errors.count, "error")
+			prohibited this project from being saved:
+		%ul
+			- @owner_info.errors.full_messages.each do |msg|
+				%li= msg
+
+= form_for [@project, @owner_info], :html => {:id=> "ownder_info_form", :multipart=> true}  do |f|
+	.row#verify-account-fourth-row
+		.container
+			.row-fluid.content
+				.span9.left-content
+					.row-fluid.left-content-header
+						%h4 Sed ut perspiciatis unde omnis iste natus error.
+						%p{style: "font-size: 120%;margin-top: 30px;"} Sit voluptatem accusantium doloremque laudantium.
+						%p{style: "font-size: 120%;"} Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis
+						%ul{style: "font-size: 120%; margin-left: 40px;"}
+							%li Et quasi architecto beatae vitae dicta sunt explicabo.
+							%li Nemo enim ipsam voluptatem quia voluptas sit aspernatur.
+							%li aut odit aut fugit, sed quia consequuntur magni dolores eos qui.
+						%p{style: "font-size: 120%; margin-bottom: 30px;"} Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+
+					.row-fluid.left-content-row
+						.span4
+							%h5 Project Introductory Video
+						.span8
+							= f.text_field :video_url,:style=>"width:97%;"
+							%p
+								Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+					.row-fluid.left-content-row
+						.span4
+							%h5 Detailed Project Description
+						.span8
+							%p
+								Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.
+							= f.text_field :description,:style=>"width:97%;"
+
+					.row-fluid.left-content-row
+						.span4
+							%h5 Timeline, Potential Issues/Threats
+						.span8
+							%p
+								Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.
+							= f.text_area :timeline, :style=>"width:97%;margin-bottom: 0px;",:rows=>10
+					.row-fluid.left-content-row
+						.span4
+							%h5 Profile Photo
+						.span8
+							%center
+								.custom-upload.well
+									.fake-file
+										%input{type: "hidden"}/
+										%div
+											%h5{style:"color: #fba206;"} Lorem ipsum dolor sit amet consecteular
+											%p Lorem ipsum dolor sit amet consecteular
+										= f.file_field :photo, :class=>"entire-selectable"
+									- if !@owner_info.nil? && !@owner_info.photo.blank?
+										%img#owner_img{src: @owner_info.photo.url}
+									- else
+										%img#owner_img{src: current_user.image.url}
+					.row-fluid.left-content-row
+						.span4
+							%h5 Name
+						.span8
+							= f.text_field :name,:style=>"width:97%;"
+							%p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					.row-fluid.left-content-row
+						.span4
+							%h5 Owner Feedback
+						.span8
+							= f.text_field :owner_feedback,:style=>"width:97%;", :placeholder=>"Please tell us how you found out about IdeaMobb. Would you recommend any changes (i.e. website design/functionality, marketing campaign, etc.)?"
+					.row-fluid.left-content-row
+						.span4
+							%h5 Biography
+						.span8
+							= f.text_area :biography, :style=>"width:97%;margin-bottom: 0px;",:rows=>6
+					.row-fluid.left-content-row
+						.span4
+							%h5 Your Location
+						.span8
+							.input-prepend{style: "width: 98%;"}
+								%span.add-on
+									%i.icon-search
+								= f.text_field :location,:style=>"width:94%;"
+							
+					.row-fluid.left-content-row
+						.span4
+							%h5 Websites
+						.span8					
+							.input-append{style: "width: 98%;"}
+								= f.text_field :website,:style=>"width:94%;"
+							%p
+								LoreOmnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. m ipsum dolor sit amet, consectetur adipisicing elit.
+
+
+				.span3.right-content
+					.row-fluid
+						.thumbnail{style:"background-color: white;"}
+							#videotube
+								%video{style:"background-color: black; width: 100%; height: 100%", controls:"controls", autoplay:"autoplay", autobuffer:"autobuffer", tabindex:"0"}
+								%img{src:"http://d2cjdr17j9fuin.cloudfront.net/assets/widget/play.png"}
+							%h5{style: "margin-left: 5px;"}Lorem Ipsum Dolor Sit Amet.
+					.row-fluid{style: "margin-top: 30px;"}				
+						%h6 Sed ut perspiciatis unde.
+						%p
+							Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+					.row-fluid
+						%h6 Nemo enim ipsam voluptatem quia.
+						%p
+							Voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+					.row-fluid
+						%h6 Ut enim ad minima veniam.
+						%p
+							Quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+					.row-fluid
+						%h6 Sed ut perspiciatis unde.
+						%p
+							Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+					.row-fluid
+						%h6 Nemo enim ipsam voluptatem quia.
+						%p
+							Voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+					.row-fluid
+						%h6 Ut enim ad minima veniam.
+						%p
+							Quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+					.row-fluid
+						%h6 Sed ut perspiciatis unde.
+						%p
+							Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+					.row-fluid
+						%h6 Nemo enim ipsam voluptatem quia.
+						%p
+							Voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+.row#fifth-row
+	.container
+		.row
+			.span1.offset5
+				=link_to "Back", edit_project_path(@project), class: "btn btn-large"
+			.span1
+				= link_to "Next", '', class: " btn btn-large btn-success", id: "submit-ownerinfo"
+			.span2.offset2{:style => "padding-top: 10px;"}
+				%a
+					%i.icon-trash
+					= link_to 'Delete Project', { :action => 'destroy', :controller => 'projects', :id => @project.id } , :method=>:delete
+					
+			.span1{:style => "padding-top: 10px;"}
+				%a
+					= link_to (image_tag "icon-exit.png"), root_path
+					Exit
+= javascript_include_tag "ideamobb/owner_infos"

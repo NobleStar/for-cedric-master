@@ -1,0 +1,40 @@
+.user-content
+  %h1.title Registrants
+
+  .row
+    .span9
+      %table#registrants{:class => "display", :data => {:source => "#{ registrants_url(format: 'json') }"}}
+        %thead
+          %tr
+            %th 
+            %th id
+            %th Username
+            %th Email
+            %th Created At
+            %th 
+        %tbody
+          - @registrants.each do |registrant|
+            %tr
+              %td.center <input type="checkbox">
+              %td= registrant.id
+              %td= registrant.name
+              %td= registrant.email
+              %td= registrant.created_at.strftime("%d/%m/%Y")
+              %td= link_to "show", "#"
+
+    .span3
+      .filter
+        .top Filter
+        .body
+          .wrapper
+            %label Search Username
+            %input{:type => "text"}
+            %label Search Email
+            %input{:type => "text"}
+            .br
+            %label Created At
+            .br
+            %input{:class=> "half", :type => "text"}
+            %input{:class=> "half", :type => "text"}
+            %button.btn.btn-custom Filter
+            %button.btn Clear Filters

@@ -1,0 +1,20 @@
+.row#checklist-fourth-row {
+	background-color: #f4f4f4;
+	.content {
+		margin-top: 30px;
+		margin-bottom: 40px;
+		.left-content {
+			border-style: solid;
+			border-width: 0px 1px 0px 0px;
+			border-color: #b8b8b8;
+
+			.row-fluid {
+				margin-bottom: 30px;
+				p {
+					margin-top: 20px;
+					margin-bottom: 15px;
+				}				
+			}			
+		}
+	}
+}

@@ -1,0 +1,162 @@
+.row#second-row
+	.container
+		.row
+			.span10
+				%ul.nav-pills{:style => "margin-left: 0px;"}
+					%li.step-tab.btn.selected{:style => "z-index: 100;"}
+						= link_to "Getting Started", static_pages_getting_started_path
+					%li.step-tab.btn.selected{:style => "z-index: 90;"}
+						=link_to "Project Profile & Donation Rewards", edit_project_path(@project)
+					%li.step-tab.btn.selected{:style => "z-index: 80;"}
+						=link_to "Owner Information", edit_project_owner_info_path(@project, @project.owner_info)
+					%li.step-tab.btn.active{:style => "z-index: 70;"}
+						=link_to "Verify Account", "#"
+					%li.step-tab.btn.last-tab{:style => "z-index: 60;"}
+						=link_to "Checklist", "#"
+			.span2
+				= link_to start_preview_project_path(@project.id) do
+					%button.btn.btn-large{:style => "float:right;"}
+						%i.icon-eye-open
+						Review
+.row#third-row
+	.container
+		%h3 
+			%center
+				Lorem ipsum dolor sit amet consecteular.
+		%p
+			%center
+				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laud.
+
+.row#verify-account-fourth-row
+	.container
+		.row-fluid.content
+			.span9.left-content
+				.row-fluid.left-content-row
+					.span4
+						%h5 Payment Verification						
+					.span8
+						%h5 Sed ut perspiciatis unde omnis iste natus.
+						%p
+							Error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis. 
+						%p 
+							Et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas! 
+						%a.btn.btn-success{href: "https://payments.amazon.com/sdui/sdui/accountstatus", target: "_blank"} Connect to Amazon Payments
+				.row-fluid.left-content-row
+					.span4
+						%h5 Personal Identity Verification
+					.span8
+						%h5 Sed ut perspiciatis unde omnis iste natus.
+						%p
+							Error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis. Et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas!						
+					
+						
+						- if @account_verify.errors.any?
+							#errorExplanation
+								= pluralize(@account_verify.errors.count, "error")
+								prohibited this project to verify:
+								%ul
+									- @account_verify.errors.full_messages.each do |msg|
+										%li= msg
+							
+						= form_for [@project, @account_verify] do |f|
+							%table.table-bordered
+								%tbody
+									%tr
+										%td.label-td{style:"width:30%;"} Legal Name
+										%td{style:"width:35%;"}
+											= f.text_field :first_name,:placeholder=>"First Name"
+										%td{style:"width:35%;"}
+											= f.text_field :last_name, :placeholder=>"Last Name"
+							%table.table-bordered
+								%tbody
+									%tr
+										%td.label-td{style:"width:30%;"} Birthdate
+										%td{style:"width:30%;"}
+											= f.text_field :month, :placeholder=>"Month"
+										%td{style:"width:20%;"}
+											= f.text_field :day, :placeholder=>"Day"
+										%td{style:"width:20%;"}
+											= f.text_field :year, :placeholder=>"Year"
+							%table.table-bordered
+								%tbody
+									%tr
+										%td.label-td{style:"width:30%;", rowspan:"3"} Home/Work Address
+										%td{style:"width:70%;", colspan:"3"}
+											= f.text_field :address1, :placeholder=>"Address 1"
+									%tr
+										%td{style:"width:70%;", colspan:"3"}
+											= f.text_field :address2, :placeholder=>"Address 2(optional)"
+									%tr
+										%td{style:"width:20%;"}
+											= f.text_field :city, :placeholder=>"City"
+										%td{style:"width:20%;"}
+											= f.text_field :state, :placeholder=>"State"
+										%td{style:"width:30%;"}
+											= f.text_field :zip, :placeholder=>"Zip"
+							%table.table-bordered
+								%tbody
+									%tr
+										%td.label-td{style:"width:30%;", rowspan:"3"} Email
+										%td{style:"width:50%;"}
+											= f.text_field :email, :placeholder=>"xyz@loremipsum.com", :type => "email"
+										%td{style:"width:20%;"}
+											%b 
+												= current_user.identity_verified ? "Verified" : "Unverified"
+									%tr
+										%td{style:"width:70%; background-color:#f4f4f4;", colspan:"2"}
+											%p
+												Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore. Lorem ipsum dolor sit amet consecteualr veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+							%table.table-bordered{style:"margin-bottom: 5px;"}
+								%tbody
+									%tr
+										%td.label-td{style:"width:30%", rowspan:"3"} Phone
+										%td{style:"width:70%;"}
+											= f.text_field :phone, :placeholder=>"Ex: 000-000-0000", "text-align" => "right"
+									%tr
+										%td{style:"width:70%; background-color:#f4f4f4;"}
+											%p
+												Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore. Lorem ipsum dolor sit amet consecteualr veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+					
+
+
+			.span3.right-content
+				.row-fluid
+					%h6 Sed ut perspiciatis unde.
+					%p
+						Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+				.row-fluid
+					%h6 Nemo enim ipsam voluptatem quia.
+					%p
+						Voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+				.row-fluid
+					%h6 Ut enim ad minima veniam.
+					%p
+						Quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+				.row-fluid
+					%h6 Sed ut perspiciatis unde.
+					%p
+						Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+				.row-fluid
+					%h6 Nemo enim ipsam voluptatem quia.
+					%p
+						Voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+				.row-fluid
+					%h6 Ut enim ad minima veniam.
+					%p
+						Quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+				
+.row#fifth-row
+	.container
+		.row
+			.span1.offset5
+				= link_to "Back", edit_project_owner_info_path(@project, @project.owner_info), class: "btn btn-large"
+			.span1
+				= link_to "Next", '', class: "btn btn-large btn-success", id: "submit-accountform"
+			.span2.offset2{:style => "padding-top: 10px;"}
+				%i.icon-trash
+				=link_to 'Delete Project', { :action => 'destroy', :controller => 'projects', :id => @project.id } , :method=>:delete, :confirm => 'Are you sure?'
+			.span1{:style => "padding-top: 10px;"}
+				%a
+					= link_to (image_tag "icon-exit.png"), root_path
+					Exit
+= javascript_include_tag "ideamobb/project"

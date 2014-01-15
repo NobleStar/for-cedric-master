@@ -1,0 +1,83 @@
+.row#profile-page-second-row
+  .container
+    .row-fluid
+      .span2
+        .well
+          = image_tag(@user.image_url) if @user.image? 
+      .span10
+        %h4
+          =@user.name
+        %h5
+          =@user.get_location
+.row#profile-page-third-row
+  .container
+    .row-fluid
+      .tabbable
+        %ul.nav.nav-tabs
+          %li.active
+            = link_to "Profile/Settings", "#tab1", "data-toggle"=>"tab"
+          %li
+            = link_to "Campaigns", "#tab2", "data-toggle"=>"tab"
+          %li
+            = link_to "Campaign Donations", "#tab3", "data-toggle"=>"tab"
+          %li
+            = link_to "Personal Donations", "#tab4", "data-toggle"=>"tab"
+
+        .tab-content
+          .tab-pane.active{id: "tab1"}
+            
+            %ul.thumbnails
+              %li.span2{style: "margin-left: 0px;"}
+                .thumbnail
+                  %h3 0
+                  .caption
+                    %h5 Campaigns
+                    %p
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore.
+              %li.span2
+                .thumbnail
+                  %h3 0
+                  .caption
+                    %h5 Campaigns Contributions
+                    %p
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              %li.span2
+                .thumbnail
+                  %h3 0
+                  .caption
+                    %h5 Referrals
+                    %p
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Sed do eiusmod tempor incididunt ut labore.
+              %li.span2
+                .thumbnail
+                  %h3 0
+                  .caption
+                    %h5 Donations Made
+                    %p
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                    %p
+                      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+              %li.span2
+                .thumbnail
+                  %h3 0
+                  .caption
+                    %h5 Comments
+                    %p
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          = link_to "Settings", static_pages_profile_settings_path, class: "btn btn-success btn-large"
+
+          .tab-pane{id: "tab2"}
+            %p Howdy, I'm in Campaigns.
+          .tab-pane{id: "tab3"}
+            %p Howdy, I'm in Campaigns Donations.
+          .tab-pane{id: "tab4"}
+            %p Howdy, I'm in Personal Donations.
+
+
+
+
+
+      
+
+
+          

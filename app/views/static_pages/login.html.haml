@@ -1,0 +1,63 @@
+.row#login-second-row
+	.container
+		- #raise flash.inspect
+		.row
+			%h3
+				%center
+					Log in with Facebook
+			.row.span4.offset4
+				.row.hr-row
+					%hr.hr-row{style:"width:90%;"}
+		.row.span4.offset4						
+			= link_to image_tag("facebook_login.png", style: "margin-top: 30px;"), user_omniauth_authorize_path(:facebook)
+		.row
+			.span12
+				= render 'layouts/messages'
+			
+		.row
+			.span5
+				= render :file => 'devise/sessions/new'
+				.span{:style=>'display:none;'}
+					%h3 Log In
+					%hr.hr-row
+
+					.row-fluid
+						%input{type:"email", placeholder:"Email"}
+					.row-fluid
+						%a.pull-right forgot your password?
+					.row-fluid
+						%input{type:"password", placeholder:"Password", style: "margin-top: 0px;"}
+					.row-fluid
+						%label.checkbox
+							%input{type:"checkbox"}
+							Remember Me
+					.row-fluid{style: "margin-top: 20px;"}
+						%button.btn.btn-success.btn-large Log me in!
+			.span5.offset2
+				= render :file => 'devise/registrations/new'
+				.span{:style=>'display:none;'}
+					%h3 New to Idea Mobb
+					%hr.hr-row
+					.row-fluid
+						%input{type:"text", placeholder:"Full Name", style:"margin-top:30px;"}
+					.row-fluid
+						%input{type:"email", placeholder:"Email"}
+					.row-fluid
+						%input{type:"email", placeholder:"Confirm Email"}
+					.row-fluid
+						%input.icon-envelope{type:"password", placeholder:"Password"}
+							
+					.row-fluid
+						%input{type:"password", placeholder:"Confirm Password"}
+					.row-fluid
+						%label.checkbox
+							%input{type:"checkbox"}
+							Yes, I want the weekly Newsletter
+					.row-fluid{style: "margin-top: 20px;"}
+						.span4
+							%button.btn.btn-success.btn-large Log me in!					
+						.span8					
+							%span by signing up, you agree to IdeaMobb's
+							%br
+							%a terms and conditions
+

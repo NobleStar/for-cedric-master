@@ -1,0 +1,77 @@
+.row#second-row
+	.container
+		.row
+			.span10
+				%ul.nav-pills{:style => "margin-left: 0px;"}
+					%li.step-tab.btn.selected{:style => "z-index: 100;"}
+						=link_to "Getting Started", static_pages_getting_started_path
+					%li.step-tab.btn.selected{:style => "z-index: 90;"}
+						=link_to "Project Profile & Donation Rewards", static_pages_project_profile_path
+					%li.step-tab.btn.selected{:style => "z-index: 80;"}
+						=link_to "Owner Information", static_pages_owner_info_path
+					%li.step-tab.btn.selected{:style => "z-index: 70;"}
+						=link_to "Verify Account", static_pages_verify_account_path
+					%li.step-tab.btn.last-tab.active{:style => "z-index: 60;"}
+						=link_to "Checklist", static_pages_checklist_path
+			.span2
+				= link_to static_pages_start_preview_path do
+					%button.btn.btn-large{:style => "float:right;"}
+						%i.icon-eye-open
+						Review
+.row#third-row
+	.container
+		%h3 
+			%center
+				Lorem ipsum dolor sit amet consecteular.
+		%p
+			%center
+				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laud.
+
+.row#checklist-fourth-row
+	.container
+		.row-fluid.content
+			.span9.left-content
+				.row-fluid
+					%h4 Lorem Ipsum Dolor
+					%p Lorem ipsum dolor sit amet:
+					%ul
+						%li Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+						%li Et dolore magna alielit sed do eiusmond qua.
+						%li Sed do eiusmod tempor incididunt ut labore.
+						%li Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+				.row-fluid
+					%h4 Lorem Ipsum Dolor
+					%p Lorem ipsum dolor sit amet:
+
+					%ul
+						%li Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+						%li Et dolore magna alielit sed do eiusmond qua.
+						%li Sed do eiusmod tempor incididunt ut labore.
+						%li Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+
+			.span3.right-content
+				.row-fluid
+					.span12.third-row-block
+						= image_tag ("home_page4.png")
+						%a
+							%h5 Lorem lpsum Dolor
+						%p{style:"font-style: italic;"}by: Consecteular
+						%p
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+				
+.row#fifth-row
+	.container
+		.row
+			.span1.offset5
+				= link_to "Back", static_pages_verify_account_path, class:"btn btn-large"
+			.span1
+				= link_to "Next/Submit", start_preview_project_path(@project.id), class: "btn btn-large btn-success"
+			.span2.offset2{:style => "padding-top: 10px;"}
+				%a
+					%i.icon-trash
+					Delete Project
+			.span1{:style => "padding-top: 10px;"}
+				%a
+					= image_tag "icon-exit.png"
+					Exit

@@ -1,0 +1,92 @@
+.row#start-project-second-row
+	.container
+		.row					
+			.span7
+				%h3 Lorem lpsum Dolor Sit Amet
+				%p
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+				%br
+				%a{href:"#openModal"}
+					%button.btn.btn-large.btn-success Start a Project 
+				= link_to	"Learn How to Start a Successful Idea Mobb Project", "#"
+
+			.span5
+				= raw '<iframe src="http://player.vimeo.com/video/68951352?title=0&amp;byline=0&amp;portrait=0&amp;color=c9ff23" width="470" height="239" frameborder="0" style="margin-top: 20px; " webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
+
+				%p
+					%center
+						Lorem ipsum dolor ist amet dolor sit amet consecteular adscipling amet.
+.row#start-project-third-row
+	.container
+		.row
+			.span12
+				%h4 How Idea Mobb Works?
+		.row
+			.span4
+				%h5 Lorem lpsum Dolor
+				%p
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					<br><br>
+					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+				%h5 Lorem lpsum Dolor
+				%p
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				%h5 Lorem lpsum Dolor
+				%p
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					<br><br>
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+			.span4
+				%p.p-font-large
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+				%h5 Lorem lpsum Dolor
+				%p
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				%h5 Lorem lpsum Dolor
+				%p
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			.span4
+				%h5 Lorem lpsum Dolor
+				%p
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+					<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				%p.p-font-large
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. nisi ut aliquip ex ea commodo consequat.
+				%h5 Lorem lpsum Dolor
+				%p
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					<br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				
+#openModal.modalDialog
+	%div
+		%a.close{href:"", title: "Close"} X
+		.row#modal-first-row
+			%p
+				Okay, let's get started.
+		.row#modal-second-row
+			%center
+				= form_tag('/projects/save_country', id: "country_form") do
+					= select_tag "project_country", "<option>United States</option><option>United States - Private</option><option>United Kingdom</option><option>United Kingdom - Private</option>".html_safe
+		.row#modal-third-row
+			%p
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua:
+		.row#modal-fourth-row{style:"background-color: #d5eaff"}
+			%ul
+				%li
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				%li
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+				%li
+					Lorem ipsum dolor sit amet, consectetur adipisicing eiusmod tempor
+				%li
+					Lorem ipsum dolor sit amet, consectetur adipisicing eiusmod tempor adscipling amet sit aliqua.
+		.row#modal-fifth-row
+			%center
+				= link_to "Continue", static_pages_getting_started_path, class: "btn btn-large btn-success", id: "popup-start"
+
+					
+= javascript_include_tag "ideamobb/project"

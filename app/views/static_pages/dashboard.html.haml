@@ -1,0 +1,31 @@
+.user-content
+  %h1.title Dashboard
+
+  .row
+    .span9
+      %table#registrants{:class => "display", :data => {:source => "#{ registrants_url(format: 'json') }"}}
+        %thead
+          %tr
+            %th 
+            %th id
+            %th Username
+            %th Email
+            %th Created At
+            %th 
+
+    .span3
+      .filter
+        .top Filter
+        .body
+          .wrapper
+            %label Search Username
+            %input{:type => "text"}
+            %label Search Email
+            %input{:type => "text"}
+            .br
+            %label Created At
+            .br
+            %input{:class=> "half", :type => "text"}
+            %input{:class=> "half", :type => "text"}
+            %button.btn.btn-custom Filter
+            %button.btn Clear Filters

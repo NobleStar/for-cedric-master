@@ -1,0 +1,221 @@
+.row#second-row
+  .container
+    .row
+      .span10
+        %ul.nav-pills{:style => "margin-left: 0px;"}
+          %li.step-tab.btn.selected{:style => "z-index: 100;"}
+            = link_to "Getting Started", static_pages_getting_started_path
+          %li.step-tab.btn.active{:style => "z-index: 90;"}
+            =link_to "Project Profile & Donation Rewards", "#"
+          %li.step-tab.btn{:style => "z-index: 80;"}
+            =link_to "Owner Information", "#"
+          %li.step-tab.btn{:style => "z-index: 70;"}
+            =link_to "Verify Account", "#"
+          %li.step-tab.btn.last-tab{:style => "z-index: 60;"}
+            =link_to "Checklist", "#"
+      .span2
+        = link_to '#' do
+          %button.btn.btn-large{:style => "float:right;"}
+            %i.icon-eye-open
+            Review
+.row#third-row
+  .container
+    %h3 
+      %center
+        Lorem ipsum sit consecteular.
+    %p
+      %center
+        Sed ut perspiciatis unde omnis doloremque laud.
+
+.row
+  .span12
+    = render 'layouts/messages'
+- if @project.errors.any?
+  #errorExplanation
+    %h2
+      = pluralize(@project.errors.count, "error")
+      prohibited this project from being saved:
+    %ul
+      - @project.errors.full_messages.each do |msg|
+        %li= msg
+= form_for @project, :html => {:multipart=> true, :id => "project_form"}  do |f|
+  
+  .row#verify-account-fourth-row
+    .container
+      .row-fluid.content
+        .span9.left-content
+          .row-fluid.left-content-row
+            .span4
+              %h5 Image
+            .span8
+              %center
+                .custom-upload.well
+                  .fake-file
+                    %input{type: "hidden"}/
+                    %div
+                      %h5{style:"color: #fba206;"} Lorem ipsum dolor sit amet consecteular
+                      %p Lorem ipsum dolor sit amet consecteular
+                    = f.file_field :image, :class=>"entire-selectable"
+                  %img
+          .row-fluid.left-content-row
+            .span4
+              %h5 Title
+            .span8
+              = f.text_field :title,:style=>"width:97%;", :maxlength=> "70"
+              / %input{type:"text", style: "width:97%;"}
+              %p
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.          
+
+          .row-fluid.left-content-row
+            .span4
+              %h5 Category
+            .span8
+              .btn-group{style: "width: 100%;"}                 
+                = f.select :category, options_for_select((1..5).map{|x| [x,x ]}, "1"  ),:class=>"dropdown-menu btn", :style=>"width: 95%;"
+                / %span.caret
+                
+                / %ul.dropdown-menu{style: "width: 95%;"} 
+                /   %li category1
+                /   %li category2
+                /   %li category3
+          .row-fluid.left-content-row
+            .span4
+              %h5 Short Description
+            .span8
+              = f.text_area :description, :style=>"width:97%;margin-bottom: 0px;",:rows=>4
+              / %textarea{rows:"4", style: "width:97%;margin-bottom: 0px;"}, :maxlength=> "150"
+          .row-fluid.left-content-row
+            .span4
+              %h5 Location
+            .span8
+              = f.text_field :location, :style=>"width: 97%; margin-top:5px;", :maxlength=> "50"
+          
+          .row-fluid.left-content-row
+            .span4
+              %h5 Funding Deadline
+            .span8
+              %table.table-bordered
+                %tbody
+                  %tr
+                    %td.label-td{style:"width:40%;"}
+                      %label.radio
+                        = f.radio_button :select_funding, "days", :checked=> true
+                        Specific Length
+                    %td{style:"width: 60%;"}
+                      = f.text_field :funding_deadline, :placeholder=>"1-45 days"   
+              %table.table-bordered
+                %tbody
+                  %tr
+                    %td.label-td{style:"width:40%;", colspan:"2"}
+                      %label.radio
+                        = f.radio_button :select_funding, "date", :checked=> false
+                        Specific End Date
+                  
+              %p
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqual. 
+              %p
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          .row-fluid.left-content-row
+            .span4
+              %h5 Goal
+            .span8
+              = f.text_field :goal, :style=>"width: 97%;",:placeholder=>"$0"
+
+              %p
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+              %p
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          
+          .row-fluid.left-content-row.donation-reward
+            .span4
+              %h5 Donation Reward
+            
+            
+            = f.fields_for :donation_rewards do |builder|
+              = render 'donation_reward_fields', f: builder
+            
+          - id, fields = link_to_add_fields "Add More Donation Rewards", f, :donation_rewards
+
+          .row-fluid.left-content-row
+            %a.add_fields.entire-selectable{"data-fields" => "#{fields.gsub("\n", "")}", "data-id" => "#{id}"}
+              .well{style:"background-color: white; width: 95%; height: 60px; margin-bottom: 0px;"}
+                %center
+                  %h5 Lorem ipsum dolor sit amet consecteular             
+                %img
+
+
+        .span3.right-content
+          .row-fluid
+            .thumbnail{style:"background-color: white;"}
+              = image_tag("home_page4.png", :id => "image_preview")
+              .caption
+                %a{style:"color: #fba206;"}
+                  %h5{style:"color: #fba206;"} Lorem lpsum Dolor
+                %p{style:"font-style: italic;"}by: Consecteular
+                %p
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                .progress{style:"margin-top: 20px; margin-bottom: 10px;"}
+                  .bar{style: "width: 10%;"}
+                .row-fluid
+                  .span4
+                    %p 000%
+                  .span4
+                    %p $0,000
+                  .span4
+                    %p 00
+                .row-fluid
+                  .span4
+                    %p funded
+                  .span4
+                    %p pledged
+                  .span4
+                    %p Days to go       
+          .row-fluid
+            %label.checkbox
+              = session[:project_country]
+              = check_box_tag 'is_private', 'yes', (true if ['United States - Private', 'United Kingdom - Private'].include?(session[:project_country]))
+              
+              %h5 Make This Project Private
+          .row-fluid        
+            %h6 Sed ut perspiciatis unde.
+            %p
+              Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+          .row-fluid
+            %h6 Nemo enim ipsam voluptatem quia.
+            %p
+              Voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+          .row-fluid
+            %h6 Ut enim ad minima veniam.
+            %p
+              Quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+          .row-fluid
+            %h6 Sed ut perspiciatis unde.
+            %p
+              Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+          .row-fluid
+            %h6 Nemo enim ipsam voluptatem quia.
+            %p
+              Voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
+          .row-fluid
+            %h6 Ut enim ad minima veniam.
+            %p
+              Quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
+        
+.row#fifth-row
+  .container
+    .row
+      .span1.offset5
+        - unless @project.new_record?
+          =link_to "Back", getting_started_project_path(@project), class: "btn btn-large"
+        - else
+          = link_to "Back", static_pages_getting_started_path, class: "btn btn-large"
+      .span1
+       
+        = link_to "Next", static_pages_owner_info_path, class: "btn btn-large btn-success", id: "submit-project"
+      .span2.offset2{:style => "padding-top: 10px;"}
+      .span1{:style => "padding-top: 10px;"}
+        %a
+          = link_to (image_tag "icon-exit.png"), root_path
+          Exit
+
+= javascript_include_tag "ideamobb/project"
