@@ -1,5 +1,5 @@
 ForCedric::Application.routes.draw do
-devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
   match "/" => "static_pages#home_page"
   get "static_pages/getting_started"
   get "static_pages/start_project"
@@ -14,7 +14,8 @@ devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_call
   get "static_pages/project_profile"
   get "static_pages/owner_info"
   get "static_pages/login"
-  get "static_pages/profile_page"  
+
+  get "static_pages/profile_page", to: 'static_pages#profile_page'  
 
   get "static_pages/profile_settings" 
 

@@ -139,3 +139,32 @@ hr#left-line {
 #step-tabs {
 	background-color: #eee;		
 }
+
+.thumbnail {
+	text-decoration: none;
+	min-height: 120px;
+}
+
+.thumbnail:hover {
+	text-decoration: none;
+}
+
+.campaign-img {
+	width: 150px !important;
+	height: 150px !important;
+}
+
+.public-campaigns li {
+	margin-bottom: 5px !important;
+	margin-left: 0px !important;
+}
+
+.public-campaigns li:last-child {
+	margin-bottom: -5px !important;
+	margin-left: 0px !important;
+}
+
+.private-campaigns li {
+	margin-bottom: 5px !important;
+	margin-left: 0px !important;
+}

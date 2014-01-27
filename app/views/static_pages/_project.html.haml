@@ -1,0 +1,25 @@
+%li.thumbnail.span12
+  .span3
+    = image_tag project.image.url, class: "img-polaroid campaign-img", alt: ""
+  .span6
+    %h2
+      = project.owner_info.name
+    %p
+      = project.title
+  .span3
+    .btn-group.pull-right
+      - if project.is_submitted
+        %a.btn.dropdown-toggle.btn-large.disabled{"data-toggle" => "dropdown", href: "#"}
+          Option
+          %span.caret
+        
+      - else
+        %a.btn.dropdown-toggle.btn-large{"data-toggle" => "dropdown", href: "#"}
+          Option
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            %a
+              Edit 
+          %li
+            = link_to 'Delete', project_path(project), :method => "DELETE"

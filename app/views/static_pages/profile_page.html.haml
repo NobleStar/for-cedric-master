@@ -3,17 +3,17 @@
     .row-fluid
       .span2
         .well
-          = image_tag(@user.image_url) if @user.image? 
+          = image_tag(@user.image.url) if @user.image? 
       .span10
         %h4
-          =@user.name
+          = @user.name
         %h5
-          =@user.get_location
+          = @user.get_location
 .row#profile-page-third-row
   .container
     .row-fluid
       .tabbable
-        %ul.nav.nav-tabs
+        %ul.nav.nav-tabs{:id => "profileTab"}
           %li.active
             = link_to "Profile/Settings", "#tab1", "data-toggle"=>"tab"
           %li
@@ -27,57 +27,100 @@
           .tab-pane.active{id: "tab1"}
             
             %ul.thumbnails
-              %li.span2{style: "margin-left: 0px;"}
-                .thumbnail
-                  %h3 0
+              %li.span2.offset1
+                %a.thumbnail{:id => 'userCampgn'}
                   .caption
-                    %h5 Campaigns
+                    %h5 Total Campaigns
                     %p
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore.
+                      = @user.projects.count
               %li.span2
-                .thumbnail
-                  %h3 0
+                %a.thumbnail{:id => 'userPrivate'}
                   .caption
-                    %h5 Campaigns Contributions
+                    %h5 Total Private Campaigns
                     %p
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      = @user.projects.where("private_code <> ''").count
               %li.span2
-                .thumbnail
-                  %h3 0
+                %a.thumbnail{:id => 'userDonation'}
                   .caption
-                    %h5 Referrals
+                    %h5 Campaign Donations
                     %p
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Sed do eiusmod tempor incididunt ut labore.
+                      = @mysum
               %li.span2
-                .thumbnail
-                  %h3 0
+                %a.thumbnail{:id => 'otherDonation'}
                   .caption
-                    %h5 Donations Made
+                    %h5 Personal Donations
                     %p
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                    %p
-                      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      = @othersum
               %li.span2
-                .thumbnail
-                  %h3 0
+                %a.thumbnail
                   .caption
-                    %h5 Comments
+                    %h5 Total Transfers
                     %p
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          = link_to "Settings", static_pages_profile_settings_path, class: "btn btn-success btn-large"
+                     
+            = link_to "Settings", static_pages_profile_settings_path, class: "btn btn-success btn-large"
 
           .tab-pane{id: "tab2"}
-            %p Howdy, I'm in Campaigns.
+            %ul.public-campaigns.thumbnails
+              = render partial: 'project', collection: @public_campaigns
+            %ul.private-campaigns.thumbnails
+              = render partial: 'project', collection: @private_campaigns
           .tab-pane{id: "tab3"}
-            %p Howdy, I'm in Campaigns Donations.
+            %table.table
+              %thead
+                %th
+                  Date
+                %th
+                  Campaign
+                %th
+                  Amount
+                %th
+                  Reward
+              %tbody
+                = render partial: "donation_reward", collection: @user_projects_donations 
+
+            = link_to "Settings", static_pages_profile_settings_path, class: "btn btn-success btn-large"
+
           .tab-pane{id: "tab4"}
-            %p Howdy, I'm in Personal Donations.
+            %table.table
+              %thead
+                %th
+                  Date
+                %th
+                  Campaign
+                %th
+                  Amount
+                %th
+                  Reward
+              %tbody
+                = render partial: "donation_reward", collection: @person_projects_donations 
 
+            = link_to "Settings", static_pages_profile_settings_path, class: "btn btn-success btn-large"
 
+:javascript
+  $("#userCampgn").click(function(){
+    $(".private-campaigns").show();
+    $(".public-campaigns").show();
 
+    $("#profileTab a[href=#tab2]").tab('show');
+  });
 
+  $("#userPrivate").click(function(){
+    $(".private-campaigns").show();
+    $(".public-campaigns").hide();
+    
+    $("#profileTab a[href=#tab2]").tab('show');
+  });
 
-      
+  $("#userDonation").click(function(){
+    $("#profileTab a[href=#tab3]").tab('show');
+  });
 
+  $("#otherDonation").click(function(){
+    $("#profileTab a[href=#tab4]").tab('show');
+  });
 
-          
+  $("#profileTab a[href=#tab2]").click(function(){
+    $(".private-campaigns").show();
+    $(".public-campaigns").show();
+  });
+  

@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131009131503) do
+ActiveRecord::Schema.define(:version => 20140127030049) do
 
   create_table "donation_rewards", :force => true do |t|
-    t.string   "amount"
     t.string   "name"
     t.text     "description"
     t.integer  "month"
@@ -25,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20131009131503) do
     t.string   "no_avail_input"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.decimal  "amount"
   end
 
   create_table "owner_infos", :force => true do |t|
